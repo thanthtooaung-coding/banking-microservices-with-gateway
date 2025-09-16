@@ -8,9 +8,9 @@ spring:
     password: root
   jpa:
     hibernate:
-      ddl-auto: none
+      ddl-auto: update
   flyway:
-    enabled: true
+    enabled: false
     locations: classpath:db/migration
     table: flyway_account_schema_history
   kafka:
