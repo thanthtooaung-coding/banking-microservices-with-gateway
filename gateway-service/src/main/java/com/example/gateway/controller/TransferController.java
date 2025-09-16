@@ -11,9 +11,9 @@ import java.util.Map;
 @RestController
 @RequestMapping("/api")
 public class TransferController {
-  private final ManagedChannel accountChannel = ManagedChannelBuilder.forAddress("localhost",9091).usePlaintext().build();
+  private final ManagedChannel accountChannel = ManagedChannelBuilder.forAddress("account-service",9091).usePlaintext().build();
   private final AccountServiceGrpc.AccountServiceBlockingStub accountStub = AccountServiceGrpc.newBlockingStub(accountChannel);
-  private final JwtUtil jwt = new JwtUtil("my-very-secret-change-this", 3600000);
+  private final JwtUtil jwt = new JwtUtil("8gGQ0rEqly4RgYkuAQDM3GOgb4ajjAVn1oRluFl0qws=", 3600000);
 
   @PostMapping("/transfer")
   public ResponseEntity<?> transfer(@RequestHeader("Authorization") String auth, @RequestBody Map body){

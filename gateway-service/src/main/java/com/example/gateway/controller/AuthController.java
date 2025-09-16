@@ -11,9 +11,9 @@ import java.util.Map;
 @RestController
 @RequestMapping("/api/auth")
 public class AuthController {
-  private final ManagedChannel userChannel = ManagedChannelBuilder.forAddress("infra-user-service",9090).usePlaintext().build();
+  private final ManagedChannel userChannel = ManagedChannelBuilder.forAddress("user-service",9090).usePlaintext().build();
   private final UserServiceGrpc.UserServiceBlockingStub userStub = UserServiceGrpc.newBlockingStub(userChannel);
-  private final JwtUtil jwt = new JwtUtil("my-very-secret-change-this", 3600000);
+  private final JwtUtil jwt = new JwtUtil("8gGQ0rEqly4RgYkuAQDM3GOgb4ajjAVn1oRluFl0qws=", 3600000);
 
   @PostMapping("/register")
   public ResponseEntity<?> register(@RequestBody Map<String,String> body){
