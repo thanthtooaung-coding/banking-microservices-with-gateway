@@ -1,0 +1,24 @@
+server:
+  port: 8081
+
+spring:
+  datasource:
+    url: jdbc:postgresql://postgresSQL:5432/bankdb
+    username: postgres
+    password: root
+  jpa:
+    hibernate:
+      ddl-auto: update
+  flyway:
+    enabled: false
+    locations: classpath:db/migration
+    table: flyway_user_schema_history
+  kafka:
+    bootstrap-servers: kafka:9092
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.apache.kafka.common.serialization.StringSerializer
+
+grpc:
+  server:
+    port: 9090

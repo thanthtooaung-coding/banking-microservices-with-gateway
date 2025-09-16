@@ -1,0 +1,28 @@
+syntax = "proto3";
+package proto.account;
+option java_package = "com.example.proto.account";
+option java_outer_classname = "AccountProto";
+
+message CreateAccountRequest { int64 userId = 1; }
+message CreateAccountResponse { int64 accountId = 1; bool success = 2; string message = 3; }
+
+message TransferRequest {
+  int64 fromAccountId = 1;
+  int64 toAccountId = 2;
+  double amount = 3;
+  string idempotencyKey = 4;
+}
+message TransferResponse { bool success = 1; string transferId = 2; string message = 3; }
+
+message GetAccountRequest { int64 accountId = 1; }
+message GetAccountResponse {
+  int64 accountId = 1;
+  int64 userId = 2;
+  double balance = 3;
+}
+
+service AccountService {
+  rpc CreateAccountForUser(CreateAccountRequest) returns (CreateAccountResponse);
+  rpc Transfer(TransferRequest) returns (TransferResponse);
+  rpc GetAccount(GetAccountRequest) returns (GetAccountResponse);
+}

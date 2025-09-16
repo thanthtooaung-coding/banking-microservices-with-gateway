@@ -1,0 +1,17 @@
+server:
+  port: 8080
+
+jwt:
+  secret: 8gGQ0rEqly4RgYkuAQDM3GOgb4ajjAVn1oRluFl0qws=
+  expiration-ms: 3600000
+
+grpc:
+  clients:
+    user:
+      address: static://localhost:9090
+    account:
+      address: static://localhost:9091
+
+spring:
+  kafka:
+    bootstrap-servers: kafka:9092

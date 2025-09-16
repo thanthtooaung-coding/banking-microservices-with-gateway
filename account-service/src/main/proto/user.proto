@@ -1,0 +1,38 @@
+syntax = "proto3";
+package proto.user;
+option java_package = "com.example.proto.user";
+option java_outer_classname = "UserProto";
+
+message CreateUserRequest {
+  string username = 1;
+  string email = 2;
+  string password = 3;
+}
+message CreateUserResponse {
+  int64 id = 1;
+  string username = 2;
+  string email = 3;
+  bool success = 4;
+  string message = 5;
+}
+
+message AuthRequest {
+  string username = 1;
+  string password = 2;
+}
+message AuthResponse {
+  int64 id = 1;
+  string username = 2;
+  string email = 3;
+  bool success = 4;
+  string message = 5;
+}
+
+message GetUserRequest { int64 id = 1; }
+message GetUserResponse { int64 id = 1; string username = 2; string email = 3; }
+
+service UserService {
+  rpc CreateUser(CreateUserRequest) returns (CreateUserResponse);
+  rpc Authenticate(AuthRequest) returns (AuthResponse);
+  rpc GetUserById(GetUserRequest) returns (GetUserResponse);
+}
